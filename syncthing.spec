@@ -22,6 +22,7 @@ URL:            https://syncthing.net
 # use official release tarball (contains vendored dependencies)
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{tag}/%{name}-source-%{tag}.tar.gz
 
+BuildRequires:  golang
 BuildRequires:  desktop-file-utils
 BuildRequires:  systemd-rpm-macros
 
