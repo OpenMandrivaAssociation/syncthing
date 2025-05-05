@@ -5,7 +5,7 @@
 
 Name:           syncthing
 Summary:        Continuous File Synchronization
-Version:        1.29.2
+Version:        1.29.5
 Release:        1
 
 %global tag     v%{version}
