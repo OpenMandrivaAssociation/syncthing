@@ -8,6 +8,7 @@ Group:          Productivity/Networking/File-Sharing
 URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
 
+
 BuildRequires:  golang
 BuildRequires:  desktop-file-utils
 BuildRequires:  systemd-rpm-macros
