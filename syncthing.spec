@@ -3,7 +3,12 @@ Name:           syncthing
 Version:        1.30.0
 Release:        0
 Summary:        Continuous File Synchronisation
-License:        MPL-2.0
+# syncthing (MPL-2.0) bundles
+# - angular, bootstrap, daterangepicker, fancytree, jQuery, moment (MIT),
+# - HumanizeDuration (MIT OR Unlicense),
+# - ForkAwesome (MIT, OFL-1.1, CC-BY-3.0), and
+# - a number of go packages (Apache-2.0, BSD-2-Clause, BSD-2-Clause-Views, BSD-3-Clause, ISC, MIT, MPL-2.0)
+License:        MPL-2.0 AND Apache-2.0 AND BSD-2-Clause AND BSD-2-Clause-Views AND BSD-3-Clause AND CC-BY-3.0 AND ISC AND MIT AND OFL-1.1 AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense)
 Group:          Productivity/Networking/File-Sharing
 URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
@@ -105,6 +110,23 @@ cp -pav ./man/*.5 %{buildroot}/%{_mandir}/man5/
 cp -pav ./man/*.7 %{buildroot}/%{_mandir}/man7/
 cp -pav ./man/stdiscosrv.1 %{buildroot}/%{_mandir}/man1/
 cp -pav ./man/strelaysrv.1 %{buildroot}/%{_mandir}/man1/
+
+
+%post
+%systemd_post syncthing@.service
+%systemd_user_post syncthing.service
+
+%preun
+%systemd_preun syncthing@.service
+%systemd_preun syncthing.service
+
+%post tools
+%systemd_post strelaysrv.service
+%systemd_post stdiscosrv.service
+
+%preun tools
+%systemd_preun strelaysrv.service
+%systemd_preun stdiscosrv.service
 
 %files
 %license LICENSE
